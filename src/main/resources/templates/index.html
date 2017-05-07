@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	 integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+	 crossorigin="anonymous">
+	 
+<title>RedBond | Home</title>
+
+ <!-- Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
+
+  
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand title" href="/">RedBond</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Search Blood</a></li>
+        <li><a href="#how-work">How It Works</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="container-fluid">
+
+	<section class="row">
+		<section class="header">
+			<div class="overlay"></div>
+			<div class="col-md-5 col-md-offset-1">
+				<div class="header_title">
+					<h1>It's not <span>donation</span>! <br>it's duty</h1>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="signup">
+					<div class="form-body">
+					    <ul class="nav nav-tabs final-login">
+					        <li class="active"><a data-toggle="tab" href="#sectionA">Sign In</a></li>
+					        <li><a data-toggle="tab" href="#sectionB">Join us!</a></li>
+					    </ul>
+					    <div class="tab-content">
+					        <div id="sectionA" class="tab-pane fade in active">
+						        <div class="innter-form">
+						            <form class="sa-innate-form" method="post">
+						            <label>Email Address</label>
+						            <input type="text" name="username">
+						            <label>Password</label>
+						            <input type="password" name="password">
+						            <button type="submit">Sign In</button>
+						            <a href="">Forgot Password?</a>
+						            </form>
+						        </div>
+						        <div class="social-login">
+						            <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
+						    		<ul>
+						            <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+						            <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
+						            <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+						            </ul>
+						        </div>
+						        <div class="clearfix"></div>
+					    	</div>
+					        <div id="sectionB" class="tab-pane fade">
+								<div class="innter-form">
+					            
+					            <form autocomplete="off" action="#" th:action="@{/registration}"
+									th:object="${user}" method="post" class="sa-innate-form"
+									role="form">
+					           
+					            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="validation-message"></label>
+								<input type="text" th:field="*{name}" required placeholder="Name"
+									class="form-control" /> 
+					            
+					             <input type="text" th:field="*{email}" required placeholder="email@example.com"
+									class="form-control" />
+								 <label
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+									class="validation-message">
+								</label>
+								
+								
+					            <label	th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+									class="validation-message"></label>
+								<input type="text" th:field="*{phone}"
+									required placeholder="+00 000 000 000" class="form-control" />
+								
+								
+					            <input type="password" th:field="*{password}" 
+									required placeholder="Password" class="form-control" />
+								<label
+									th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+									class="validation-message">
+								</label>
+					            
+					            <select required class="form-control" th:field="*{bloodgroup}">
+					            <option value="">--select your blood group--</option>
+							    <option value="O negative">O negative</option>
+							    <option value="O positive">O positive</option>
+							    <option value="A negative">A negative</option>
+							    <option value="A positive">A positive</option>
+							    
+							    <option value="B negative">B negative</option>
+							    <option value="B positive">B positive</option>
+							    <option value="AB negative">AB negative</option>
+							    <option value="AB positive">AB positive</option>
+							   </select>
+							   <label th:if="${#fields.hasErrors('bloodgroup')}" th:errors="*{bloodgroup}"
+								 class="validation-message">
+							   </label>
+							   
+							   <label	th:if="${#fields.hasErrors('country')}" th:errors="*{country}"
+									class="validation-message">
+							   </label>
+							  <input type="text" th:field="*{country}"
+									required placeholder="your country" class="form-control" /> 
+					          
+					          
+					            <label	th:if="${#fields.hasErrors('city')}" th:errors="*{city}"
+									class="validation-message">
+								</label>
+								<input type="text" th:field="*{city}"
+									required placeholder="your city" class="form-control" /> 
+								
+								<label	th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"
+								class="validation-message"></label>
+								<input type="text" th:field="*{latitude}"
+								placeholder="latitude" class="form-control" /> 
+					            
+					            <label	th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"
+								class="validation-message"></label>
+								<input type="text" th:field="*{longitude}"
+								placeholder="longitude" class="form-control" /> 
+					            
+					            <button type="submit">Join now</button>
+					            <p>By clicking Join now, you agree to hifriends's User Agreement, Privacy Policy, and Cookie Policy.</p>
+					            </form>
+					            </div>
+					            <div class="social-login">
+					            <p>- - - - - - - - - - - - - Register With - - - - - - - - - - - - - </p>
+								<ul>
+					            <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+					            <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
+					            <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+					            </ul>
+					            </div>
+					        </div>
+				    </div>
+				</div>
+			</div>
+		 </div>
+		</section>
+	</section>
+	<!-- how it works -->
+	<div class="service" >
+	<div class="container">
+		<div class="row" id="how-work">
+			<div class="col-md-12">
+				<h3>How It Works</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="service_content wow slideInLeft">
+					<div ><i class="fa fa-diamond fa-5x" aria-hidden="true"></i></div>
+					<h3>Provide Your Info</h3>
+					<p>Our templates are updated regularly so they don't break.</p>
+				</div>
+				
+				
+				
+			</div>
+			<div class="col-md-3">
+				<div class="service_content wow slideInLeft" data-wow-delay="1s">
+					<div><i class="fa fa-paper-plane fa-5x" aria-hidden="true"></i></div>
+					<h3>Post When You Need Blood</h3>
+					<p>Our templates are updated regularly so they don't break.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="service_content wow slideInLeft" data-wow-delay="2s">
+					<div><i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i></div>
+					<h3>Auto Notify The Donor</h3>
+					<p>Our templates are updated regularly so they don't break.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="service_content wow slideInLeft" data-wow-delay="3s">
+					<div><i class="fa fa-heart fa-5x" aria-hidden="true"></i></div>
+					<h3>Save Life</h3>
+					<p>Our templates are updated regularly so they don't break.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- end  -->
+	
+</section>
+<footer class="container-fluid">
+		<p> &copy; RedBond 2017 || All Rights Reserved</p>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+</body>
+</html>
