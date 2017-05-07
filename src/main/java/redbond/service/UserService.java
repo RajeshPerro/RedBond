@@ -1,5 +1,8 @@
 package redbond.service;
 
+
+import java.util.List;
+
 import redbond.model.User;
 
 public interface UserService {
@@ -8,5 +11,9 @@ public interface UserService {
 	
 	public  User findUserByEmail(String email);
 	public void saveUser(User user);
+	public List <User>findAll();
+	public User findOneUser(int id);
+	public void delete(int id);
+	
 	
 }

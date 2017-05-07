@@ -1,7 +1,9 @@
 package redbond.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,4 +43,26 @@ public class UserServiceIml implements UserService {
 		userRepository.save(user);
 	}
 
+	@Override
+	public List<User> findAll()
+	{
+		List<User> users = new ArrayList<User> ();
+		for(User user: userRepository.findAll())
+		{
+			users.add(user);
+		}
+	return users;	
+	}
+	
+	@Override
+	public void delete(int id)
+	{
+		userRepository.delete((long) id);
+	}
+
+	@Override
+	public User findOneUser(int id) {
+		// TODO Auto-generated method stub
+		return userRepository.findOne((long) id);
+	}
 }
