@@ -10,6 +10,9 @@ body{
 .navbar-default .navbar-brand {
     color: red;
 }
+.form-control-city{
+	text-transform:uppercase;
+}
 /* Registration page */
 .centered-form{
 	margin-top: 60px;
