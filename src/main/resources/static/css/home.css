@@ -3,3 +3,12 @@
 	font-size: 22px;
 	color: #004080;
 }
+
+.navbar-default {
+    background-color: #7bbde0;
+    border-color: #7bbde0;
+}
+.bloodgroup{
+	color: red;
+    font-weight: bolder;
+}

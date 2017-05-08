@@ -3,6 +3,15 @@
 	margin-bottom: 20px;
 }
 
+.navbar-default {
+    background-color: #7bbde0;
+    border-color: #7bbde0;
+}
+.container
+{
+	min-height: 88vh;
+	margin-top: 30px;
+}
 .form-signin {
   max-width: 420px;
   padding: 30px 38px 66px;

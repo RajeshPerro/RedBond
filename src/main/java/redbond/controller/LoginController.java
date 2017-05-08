@@ -1,6 +1,7 @@
 package redbond.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.validation.Valid;
 
@@ -51,7 +52,7 @@ public class LoginController implements ErrorController{
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
 	
@@ -65,13 +66,13 @@ public class LoginController implements ErrorController{
 							"There is already a user registered with the email provided");
 		}
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("registration");
 		} else {
 			user.setDate_created(new Date());
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("/");
 			
 		}
 		return modelAndView;
@@ -82,8 +83,12 @@ public class LoginController implements ErrorController{
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName()  + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+		modelAndView.addObject("userName", "Welcome " + user.getName());
+		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.addObject("userblood", user.getBloodgroup());
+		modelAndView.addObject("userphone", user.getPhone());
+		modelAndView.addObject("userCountryCity", user.getCountry()+" "+ user.getCity());
+		
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
