@@ -15,6 +15,7 @@ import redbond.service.UserServiceIml;
 public class TestController {
 	
 	String email = "rajeshghosh.cpp@gamil.com";
+	String bloodgroup = "O positive";
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -31,6 +32,13 @@ public class TestController {
 	public String findbyEmail(HttpServletRequest request)
 	{
 		request.setAttribute("dataByEmail", userService.findUserByEmail(email));
+		return "success";
+	}
+	
+	@GetMapping("/blood-group")
+	public String findBloodgroup(HttpServletRequest request)
+	{
+		request.setAttribute("matchBlood", usrSerImpl.findByBloodgroup(bloodgroup));
 		return "success";
 	}
 }

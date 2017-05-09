@@ -14,6 +14,6 @@ public interface UserService {
 	public List <User>findAll();
 	public User findOneUser(int id);
 	public void delete(int id);
-	
+	public List <User> findByBloodgroup(String bloodgroup);
 	
 }

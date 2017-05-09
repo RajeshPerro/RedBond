@@ -65,4 +65,15 @@ public class UserServiceIml implements UserService {
 		// TODO Auto-generated method stub
 		return userRepository.findOne((long) id);
 	}
+
+	@Override
+	public List<User> findByBloodgroup(String bloodgroup) {
+
+		List<User> users = new ArrayList<User> ();
+		for(User user: userRepository.findByBloodgroup(bloodgroup))
+		{
+			users.add(user);
+		}
+	return users;	
+	}
 }

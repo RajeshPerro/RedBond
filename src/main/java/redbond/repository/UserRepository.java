@@ -1,6 +1,8 @@
 package redbond.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	//Custom methods those are need for our application
 	
 		User findByEmail(String email);
+		List <User> findByBloodgroup(String bloodgroup);
 		
 		
 }
