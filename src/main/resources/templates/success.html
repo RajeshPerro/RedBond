@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Users</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -14,8 +15,14 @@
 
 <div>
 	<span th:utext="${matchBlood}"></span>
+	
 </div>
 
+<script th:inline="javascript">
+var jsonString = '[[${matchBlood}]]';
+var data = JSON.parse(jsonString)
+console.log(data);
+</script>
 
 </body>
 </html>
