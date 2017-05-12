@@ -114,8 +114,8 @@
 						<div class="col-sm-9">
 						<label	th:if="${#fields.hasErrors('city')}" th:errors="*{city}"
 								class="validation-message"></label>
-							<input type="text" th:field="*{city}"
-								placeholder="your city" class="form-control" /> 
+							<input type="text" id="city"  th:field="*{city}"
+									required placeholder="your city" class="form-control form-control-city" /> 
 						</div>
 					</div>
 					
@@ -123,8 +123,8 @@
 						<div class="col-sm-9">
 						<label	th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"
 								class="validation-message"></label>
-							<input type="text" th:field="*{latitude}"
-								placeholder="latitude" class="form-control" /> 
+							<input type="text" id="lat" th:field="*{latitude}"
+								readonly placeholder="latitude" class="form-control" /> 
 						</div>
 					</div>
 					
@@ -132,14 +132,14 @@
 						<div class="col-sm-9">
 						<label	th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"
 								class="validation-message"></label>
-							<input type="text" th:field="*{longitude}"
-								placeholder="longitude" class="form-control" /> 
+							<input type="text" id="lon" th:field="*{longitude}"
+							readonly placeholder="longitude" class="form-control" /> 
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<div class="col-sm-9">
-							<button type="submit" class="btn btn-primary btn-block">Register User</button>
+							<button type="submit" class="btn btn-primary btn-block">Join Now</button>
 						</div>
 					</div>
 					

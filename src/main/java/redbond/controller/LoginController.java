@@ -72,7 +72,7 @@ public class LoginController implements ErrorController{
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("/");
+			modelAndView.setViewName("index");
 			
 		}
 		return modelAndView;
@@ -87,7 +87,7 @@ public class LoginController implements ErrorController{
 		modelAndView.addObject("userEmail", user.getEmail());
 		modelAndView.addObject("userblood", user.getBloodgroup());
 		modelAndView.addObject("userphone", user.getPhone());
-		modelAndView.addObject("userCountryCity", user.getCountry()+" "+ user.getCity());
+		modelAndView.addObject("userCountryCity", user.getCity().toUpperCase()+", "+ user.getCountry());
 		
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
