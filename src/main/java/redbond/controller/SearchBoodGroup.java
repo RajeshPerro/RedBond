@@ -56,6 +56,8 @@ public class SearchBoodGroup {
 		matchdata = usrSerImpl.findByBloodgroup(bloodgroup);
 		String jsonData = new Gson().toJson(matchdata);
 		//obj.put("jsonData", list);
+		//String jsonFormattedString = jsonData.replaceAll("\\[", "").replaceAll("\\]","");
+		//jsonFormattedString = "{"+jsonFormattedString;
 		System.out.println("JSON DATA--->>> "+jsonData);
 		request.setAttribute("matchBlood", jsonData);
 		return "success";

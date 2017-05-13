@@ -39,13 +39,45 @@
   <body onload="initialize()">
   <textarea style="" rows="3" cols="500" th:utext="${matchBlood}" id="jsonData"> </textarea>
     <div id="map_canvas" style="width:100%; height:100%"></div>
+    <!-- <script type="text/javascript">
+      $(document).ready(function() {
+    	  var jsonData = $("#jsonData").val();
+    	  console.log(jsonData);
+    	  //obj = JSON && JSON.parse(jsonData) || $.parseJSON(jsonData);
+    	 
+    	 
+    	 
+    	  /* for(var i=0;obj.length;i++)
+    		  {
+    		  var latLng = new google.maps.LatLng(obj[i].latitude, obj[i].longitude); 
+    		  var marker = new google.maps.Marker({
+                  position: latLng,
+                  title: obj[i].name
+              });
+              marker.setMap(map);
+    		  } */
+      }); 
+    </script> -->
+    
     <script type="text/javascript">
       $(document).ready(function() {
     	  var jsonData = $("#jsonData").val();
     	  console.log(jsonData);
+    	  obj = JSON.parse(jsonData);
+    	  for(var i=0;obj.length;i++)
+		  {
+		  var latLng = new google.maps.LatLng(obj[i].latitude, obj[i].longitude); 
+		  var marker = new google.maps.Marker({
+              position: latLng,
+              title: obj[i].name
+          });
+          marker.setMap(map);
+		  } 
+    	  
         $.getJSON(jsonData, function(json1) {
         	 
-          $.each(json1, function(key, data) {
+          $.each(json1, function(key, data) 
+        		  {
             var latLng = new google.maps.LatLng(data.latitude, data.longitude); 
             // Creating a marker and putting it on the map
             var marker = new google.maps.Marker({
@@ -57,7 +89,5 @@
         });
       });
     </script>
-    
-    
   </body>
 </html>
