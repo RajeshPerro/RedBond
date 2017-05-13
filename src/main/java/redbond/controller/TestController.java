@@ -35,10 +35,10 @@ public class TestController {
 		return "success";
 	}
 	
-	@GetMapping("/blood-group")
-	public String findBloodgroup(HttpServletRequest request)
-	{
-		request.setAttribute("matchBlood", usrSerImpl.findByBloodgroup(bloodgroup));
-		return "success";
-	}
+//	@GetMapping("/blood-group")
+//	public String findBloodgroup(HttpServletRequest request)
+//	{
+//		request.setAttribute("matchBlood", usrSerImpl.findByBloodgroup(bloodgroup));
+//		return "/admin/searchResMap";
+//	}
 }
