@@ -1,30 +1,23 @@
-
-<!-- <div>
-	<span th:utext="${users}"></span>
-</div> -->
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Users</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- 
-</head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
+<title>RedBond | Found</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	 integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+	 crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/searchstyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
+      #map_canvas { height: 60% }
     </style>
-  </head>
-  
-  <body onload="mapRajesh()">
-  <textarea style="visibility: hidden;" rows="3" cols="500" th:utext="${matchBlood}" id="jsonData"> </textarea>
-  <p id="msgGeo"></p>
-    <div id="map_canvas" style="width:100%; height:100%"></div>
     
+
 <script>
 
     var map, infoWindow,i,obj,latt,lann,pos,marker;
@@ -78,7 +71,11 @@
     	initMap();
     	
     	$(document).ready(function() {
-
+    		$("#a").click(function(){
+    	  		alert("Request sent.!");
+    	  		});
+    		
+    		
     	  	  var jsonData = $("#jsonData").val();
     	  	  var latLng; var i, lat, lan;
     	  	  
@@ -120,13 +117,81 @@
     	        
     	        
     		  } 
-    	  	
+    	  		
     	    });
     }
-    
     </script>
+ </head>   
+<body onload="mapRajesh()">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand title" href="/">RedBond</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/admin/home">Home</a></li>
+        <li><a href="#">Edit Profile</a></li>
+        <li><a href="/admin/home">Search Again</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- <div>
+	<span th:utext="${matchBlood}"></span>
+</div> -->
+<textarea style="display:none" rows="3" cols="500" th:utext="${matchBlood}" id="jsonData"> </textarea>
+<div id="map_canvas"></div>
+<div class="container" style="margin-top: 100px;">
+<table class="table table-striped">
+    <thead>
+      <tr>
+      	<th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Blood Group</th>
+        <th>Address</th>
+        <th>Request</th>
+      </tr>
+    </thead>
+	  <tbody>
+	  <tr th:each="matchBlood : ${matchBlood2}">
+      <th scope="row">1</th>
+      <td><span th:utext="${matchBlood.name}"></span></td>
+      <td><span th:utext="${matchBlood.email}"></span></td>
+      <td><span th:utext="${matchBlood.phone}"></span></td>
+      <td><span th:utext="${matchBlood.bloodgroup}"></span></td>
+      <td><span th:utext="${matchBlood.city}"></span></td>
+      <td><button class="btn btn-warning" id="a">Save Life</button></td>
+      </tr>
+	  </tbody>
+</table>
+</div>
+
+</body>
+<footer class="container-fluid">
+		<p> &copy; RedBond 2017 || All Rights Reserved</p>
+</footer>
+
   
     <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDvhum3xU3dGLACk9ziBwFUGbwlsq7C_e8&callback=initMap">
     </script>
-  </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
 </html>

@@ -34,32 +34,34 @@ public class SearchBoodGroup {
 	
 	public List<User> matchdata;
 	String bloodgroup;
-//	@RequestMapping(value = "/bloodgroup", method = RequestMethod.GET)
-//	public ModelAndView bloodSearch(HttpServletRequest request, HttpServletResponse res) throws Exception
-//	{
-//		
-//		 bloodgroup = request.getParameter("bloodgroup");
-//		
-//		ModelAndView modelAndView = new ModelAndView();
-//		matchdata = usrSerImpl.findByBloodgroup(bloodgroup);
-//		modelAndView.addObject("matchBlood",matchdata);
-//		modelAndView.setViewName("searchresult");
-//		return modelAndView;
-//	}
-	
 	@RequestMapping(value = "/bloodgroup", method = RequestMethod.GET)
-	public String findBloodgroup(HttpServletRequest request)
+	public ModelAndView bloodSearch(HttpServletRequest request, HttpServletResponse res) throws Exception
 	{
 		
-		bloodgroup = request.getParameter("bloodgroup");
+		 bloodgroup = request.getParameter("bloodgroup");
 		
+		ModelAndView modelAndView = new ModelAndView();
 		matchdata = usrSerImpl.findByBloodgroup(bloodgroup);
 		String jsonData = new Gson().toJson(matchdata);
-		//obj.put("jsonData", list);
-		//String jsonFormattedString = jsonData.replaceAll("\\[", "").replaceAll("\\]","");
-		//jsonFormattedString = "{"+jsonFormattedString;
-		System.out.println("JSON DATA--->>> "+jsonData);
 		request.setAttribute("matchBlood", jsonData);
-		return "success";
+		modelAndView.addObject("matchBlood2",matchdata);
+		modelAndView.setViewName("/admin/searchresult");
+		return modelAndView;
 	}
+	
+//	@RequestMapping(value = "/bloodgroup", method = RequestMethod.GET)
+//	public String findBloodgroup(HttpServletRequest request)
+//	{
+//		
+//		bloodgroup = request.getParameter("bloodgroup");
+//		
+//		matchdata = usrSerImpl.findByBloodgroup(bloodgroup);
+//		String jsonData = new Gson().toJson(matchdata);
+//		//obj.put("jsonData", list);
+//		//String jsonFormattedString = jsonData.replaceAll("\\[", "").replaceAll("\\]","");
+//		//jsonFormattedString = "{"+jsonFormattedString;
+//		System.out.println("JSON DATA--->>> "+jsonData);
+//		request.setAttribute("matchBlood", jsonData);
+//		return "success";
+//	}
 }
