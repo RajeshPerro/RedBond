@@ -31,17 +31,19 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
+     <!--  th:href="@{/order/details(id=3)}" -->
       
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/admin/home">Home</a></li>
-        <li><a href="#">Edit Profile</a></li>
+        <li><a th:href="@{/editprofile(id=${userId})}">Edit Profile</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 <div class="container">
+
 <div class="col-lg-12 col-sm-12" style="margin-top: 3%; min-height: 700px;">
     <div class="card hovercard">
         <div class="card-background">

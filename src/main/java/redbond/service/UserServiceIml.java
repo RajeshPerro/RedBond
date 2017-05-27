@@ -63,7 +63,7 @@ public class UserServiceIml implements UserService {
 	@Override
 	public User findOneUser(int id) {
 		// TODO Auto-generated method stub
-		return userRepository.findOne((long) id);
+		return userRepository.findById(id);
 	}
 
 	@Override

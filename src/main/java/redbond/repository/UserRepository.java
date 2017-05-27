@@ -15,6 +15,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 		User findByEmail(String email);
 		List <User> findByBloodgroup(String bloodgroup);
+		//public void delete(int id);
+		User findById(int id);
+		
 		
 		
 }

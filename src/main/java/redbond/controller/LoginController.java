@@ -3,10 +3,14 @@ package redbond.controller;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorController;
+import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
@@ -20,6 +24,7 @@ import redbond.service.UserService;
 
 
 @RestController
+@Scope("session")
 public class LoginController implements ErrorController{
 	
 	@Autowired
@@ -83,6 +88,7 @@ public class LoginController implements ErrorController{
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userId", + user.getId());
 		modelAndView.addObject("userName", "Welcome " + user.getName());
 		modelAndView.addObject("userEmail", user.getEmail());
 		modelAndView.addObject("userblood", user.getBloodgroup());
