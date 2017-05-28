@@ -99,5 +99,36 @@ public class LoginController implements ErrorController{
 		return modelAndView;
 	}
 	
-
+	@RequestMapping(value="/forgotpass", method = RequestMethod.GET)
+	public ModelAndView forgotPassword()
+	{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forgotpass");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/forgotpass", method = RequestMethod.POST)
+	public ModelAndView changePassword(HttpServletRequest request)
+	{
+		String email;
+		email = request.getParameter("email");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (userService.findUserByEmail(email) == null) {
+			
+			
+			modelAndView.addObject("error", "Email is invalid, please verify!");
+			modelAndView.setViewName("forgotpass");
+			
+		}
+		else{
+			modelAndView.addObject("successMessage", "Done.!");
+			
+		}
+		
+		modelAndView.setViewName("forgotpass");
+		
+		return modelAndView;
+	}
 }
