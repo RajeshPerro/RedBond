@@ -18,6 +18,14 @@
   <body>
 <div>
 	<span th:utext="${userInfo}" ></span>
+	<table>
+	<tr>
+	<td><input type="text" th:value="${userInfo.name}"></td>
+	<td><input type="text" th:value="${userInfo.email}"></td>
+	<td><input type="text" th:value="${userInfo.phone}"></td>
+	<td><input type="text" th:value="${userInfo.bloodgroup}"></td>
+	</tr>
+	</table>
 </div>
 
   </body>

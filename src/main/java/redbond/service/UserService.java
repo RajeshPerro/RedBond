@@ -11,6 +11,7 @@ public interface UserService {
 	
 	public  User findUserByEmail(String email);
 	public void saveUser(User user);
+	public void updateName(String name, String phone, String bloodgroup, String country, String city, String latitude,String longitude, int id);
 	public List <User>findAll();
 	public User findOneUser(int id);
 	public void delete(int id);

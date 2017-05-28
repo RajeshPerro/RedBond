@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import redbond.model.Role;
 
@@ -42,6 +43,12 @@ public class UserServiceIml implements UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
+//	@Override
+//	public void updateUser(User user) {
+//		// TODO Auto-generated method stub
+//		userRepository.setUserInfoById(user.getName(), user.getEmail(), user.getPhone(), user.getBloodgroup(), user.getCountry(), user.getCity(), user.getLatitude(), user.getLongitude(), user.getId());
+//		
+//	}
 
 	@Override
 	public List<User> findAll()
@@ -57,12 +64,13 @@ public class UserServiceIml implements UserService {
 	@Override
 	public void delete(int id)
 	{
-		userRepository.delete((long) id);
+		userRepository.delete(id);
 	}
 
 	@Override
 	public User findOneUser(int id) {
 		// TODO Auto-generated method stub
+		
 		return userRepository.findById(id);
 	}
 
@@ -76,4 +84,17 @@ public class UserServiceIml implements UserService {
 		}
 	return users;	
 	}
+
+	@Override
+	@Transactional
+	public void updateName(String name, String phone, String bloodgroup, String country, String city, String latitude,String longitude, int id) {
+		// TODO Auto-generated method stub
+//		User u = new User();
+//		name = u.getName();
+//		id= u.getId();
+		System.out.println("Name--->>>>"+name+"id--->>>>"+id);
+		userRepository.update(name, phone, bloodgroup, country, city, latitude, longitude, id);
+	}
+
+	
 }
